@@ -1,5 +1,5 @@
 # Use Maven to build the app
-FROM maven:3.8.8-openjdk-8 AS build
+FROM maven:3.8-openjdk-8 AS build
 
 # Set workdir
 WORKDIR /app
@@ -15,7 +15,7 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 # Use a lightweight JDK for running
-FROM maven:3.8.8-openjdk-8
+FROM maven:3.8-openjdk-8
 
 # Set working directory
 WORKDIR /app
