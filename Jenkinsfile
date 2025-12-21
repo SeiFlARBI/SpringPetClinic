@@ -20,10 +20,14 @@ pipeline {
             }
         }
 
+        environment {
+            SONAR_TOKEN = credentials('sonar-token') // ID of your Jenkins credential
+        }
+
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('SonarQube') {
-                    sh 'mvn sonar:sonar'
+                    sh 'mvn sonar:sonar -Dsonar.login=${env.SONAR_TOKEN}'
                 }
             }
         }
