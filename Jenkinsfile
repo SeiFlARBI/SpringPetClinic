@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/username/mon-projet.git'
+                git 'https://github.com//SeiFlARBI/SpringPetClinic.git'
             }
         }
 
