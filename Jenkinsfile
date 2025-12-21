@@ -5,6 +5,10 @@ pipeline {
         maven 'Maven3'
     }
 
+    environment {
+        SONAR_TOKEN = credentials('sonar-token') // ID of your Jenkins credential
+    }
+
     stages {
         stage('Checkout') {
             steps {
@@ -18,10 +22,6 @@ pipeline {
                 sh 'mvn clean'
                 sh 'mvn test'
             }
-        }
-
-        environment {
-            SONAR_TOKEN = credentials('sonar-token') // ID of your Jenkins credential
         }
 
         stage('SonarQube Analysis') {
