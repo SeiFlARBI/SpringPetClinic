@@ -38,9 +38,18 @@ pipeline {
             }
         }
 
-        stage('Docker Build') {
+        stage('Build & Push Docker') {
             steps {
-                sh 'docker build -t mon-app:latest .'
+                // Login Docker Hub
+                withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', 
+                                          usernameVariable: 'DOCKER_USER', 
+                                          passwordVariable: 'DOCKER_PASS')]) {
+                    sh 'echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin'
+                }
+
+                // Build et push l'image
+                sh 'docker build -t sssff/springpetclinic:latest .'
+                sh 'docker push sssff/springpetclinic:latest'
             }
         }
     }
