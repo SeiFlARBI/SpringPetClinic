@@ -53,5 +53,17 @@ pipeline {
                 sh 'docker push sssff/springpetclinic:latest'
             }
         }
+
+        stage('K8s Deployment - Minikube') {
+            steps {
+                script {
+                    // Appliquer le fichier YAML avec kubectl
+                    sh 'kubectl apply -f k8s-deployment.yaml'
+                    // Vérifier le déploiement
+                    sh 'kubectl get pods'
+                    sh 'kubectl get svc spring-petclinic-service'
+                }
+            }
+        }
     }
 }
