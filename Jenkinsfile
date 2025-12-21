@@ -48,6 +48,7 @@ pipeline {
                 }
 
                 // Build et push l'image
+                sh 'docker pull maven:3.8-openjdk-8'
                 sh 'docker build -t sssff/springpetclinic:latest .'
                 sh 'docker push sssff/springpetclinic:latest'
             }
