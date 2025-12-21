@@ -15,7 +15,7 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 # Use a lightweight JDK for running
-FROM openjdk:8-jdk-alpine
+FROM maven:3.8.8-openjdk-8
 
 # Set working directory
 WORKDIR /app
