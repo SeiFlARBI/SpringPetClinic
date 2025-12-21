@@ -58,10 +58,10 @@ pipeline {
             steps {
                 script {
                     // Appliquer le fichier YAML avec kubectl
-                    sh 'kubectl apply -f k8s-deployment.yaml'
+                    sh 'changeme | su vboxuser && kubectl apply -f k8s-deployment.yaml'
                     // Vérifier le déploiement
-                    sh 'kubectl get pods'
-                    sh 'kubectl get svc spring-petclinic-service'
+                    // sh 'kubectl get pods'
+                    // sh 'kubectl get svc spring-petclinic-service'
                 }
             }
         }
