@@ -10,6 +10,7 @@ pipeline {
 
         stage('Build & Unit Tests') {
             steps {
+                sh 'mvn -version'
                 sh 'mvn clean test'
             }
         }
