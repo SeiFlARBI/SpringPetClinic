@@ -58,7 +58,7 @@ pipeline {
             steps {
                 script {
                     // Appliquer le fichier YAML avec kubectl
-                    sh 'cat changeme | su vboxuser && kubectl apply -f k8s-deployment.yaml'
+                    sh 'kubectl apply -f k8s-deployment.yaml'
                     // Vérifier le déploiement
                     // sh 'kubectl get pods'
                     // sh 'kubectl get svc spring-petclinic-service'
