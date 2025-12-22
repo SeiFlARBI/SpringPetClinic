@@ -24,13 +24,16 @@ pipeline {
             }
         }
 
+     
         stage('SonarQube Analysis') {
-            steps {
-                withSonarQubeEnv('SonarQube') {
-                    sh "mvn sonar:sonar -Dsonar.login=$SONAR_TOKEN"
-                }
-            }
+    steps {
+        withSonarQubeEnv('SonarQube') {
+            sh "mvn clean verify sonar:sonar -Dsonar.login=$SONAR_TOKEN"
         }
+    }
+}
+
+        
 
         stage('UI Tests - Selenium') {
             steps {
